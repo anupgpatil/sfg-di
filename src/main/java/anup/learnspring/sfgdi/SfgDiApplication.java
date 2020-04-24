@@ -1,6 +1,7 @@
 package anup.learnspring.sfgdi;
 
 import anup.learnspring.sfgdi.controller.*;
+import anup.learnspring.sfgdi.examplebeans.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,6 +12,10 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+		System.out.println("-------Properties");
+		System.out.println(fakeDataSource.getUsername());
 
 		LanguageController languageController = (LanguageController) ctx.getBean("languageController");
 		System.out.println("-------Language");
